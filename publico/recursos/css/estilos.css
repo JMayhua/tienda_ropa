@@ -1,0 +1,79 @@
+/* Estilos generales */
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f9f9f9;
+    color: #333;
+}
+
+/* Cabecera */
+.cabecera {
+    background: linear-gradient(135deg, #ff6f61, #ff3b3f);
+    color: white;
+    padding: 20px 0;
+    box-shadow: 0 4px 8px rgba(79, 122, 59, 0.1);
+}
+
+.contenedor {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 2rem;
+    font-weight: 600;
+    margin: 0;
+}
+
+.navegacion {
+    display: flex;
+    gap: 20px;
+}
+
+.nav-link {
+    color: white;
+    text-decoration: none;
+    font-size: 1rem;
+    transition: color 0.3s ease;
+}
+
+.nav-link:hover {
+    color: #ffd700; /* Cambia el color al pasar el mouse */
+}
+
+/* Pie de página */
+.pie {
+    background: #f34e4e;
+    color: white;
+    padding: 20px 0;
+    text-align: center;
+    margin-top: 40px;
+}
+
+.pie .contenedor {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.redes-sociales {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+.social-link {
+    color: white;
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: color 0.3s ease;
+}
+
+.social-link:hover {
+    color: #ff6f61; /* Cambia el color al pasar el mouse */
+}

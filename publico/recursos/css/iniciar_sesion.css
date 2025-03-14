@@ -1,0 +1,78 @@
+/* Contenedor del formulario de inicio de sesión */
+.login-container {
+    max-width: 400px;
+    margin: 50px auto;
+    padding: 30px;
+    background: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+/* Título */
+.login-container h1 {
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 20px;
+    font-weight: 600;
+}
+
+/* Estilos para etiquetas */
+.login-container label {
+    display: block;
+    font-size: 14px;
+    margin: 10px 0 5px;
+    text-align: left;
+    color: #555;
+}
+
+/* Estilos para los campos de entrada */
+.login-container input {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    outline: none;
+    transition: 0.3s ease-in-out;
+}
+
+.login-container input:focus {
+    border-color: #e63946;
+}
+
+/* Botón de envío */
+.login-container button {
+    width: 100%;
+    padding: 12px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #fff;
+    background: #e63946;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s ease-in-out;
+    margin-top: 15px;
+}
+
+.login-container button:hover {
+    background: #b52b36;
+}
+
+/* Enlace de registro */
+.login-container p {
+    margin-top: 15px;
+    font-size: 14px;
+    color: #555;
+}
+
+.login-container a {
+    color: #e63946;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.login-container a:hover {
+    text-decoration: underline;
+}
