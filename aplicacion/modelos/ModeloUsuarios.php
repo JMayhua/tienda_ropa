@@ -19,19 +19,20 @@ class ModeloUsuarios {
      * @param string $rol Rol del usuario (por defecto: 'cliente').
      * @return bool True si se registró correctamente, false en caso contrario.
      */
-    public function registrarUsuario($nombre, $email, $contrasena, $rol = 'cliente') {
+    public function registrar($nombre, $email, $contrasena, $rol = 'cliente') {
         try {
             // Verificar si el email ya está registrado
             $query = "SELECT id FROM usuarios WHERE email = :email";
             $stmt = $this->db->prepare($query);
             $stmt->execute([':email' => $email]);
             if ($stmt->fetch(PDO::FETCH_ASSOC)) {
-                $_SESSION['error'] = "El email ya está registrado.";
-                return false;
+                error_log("Email ya registrado: " . $email);
+                return false; // Email ya registrado
             }
 
             // Hash de la contraseña
             $contrasenaHash = password_hash($contrasena, PASSWORD_DEFAULT);
+            error_log("Contraseña hasheada creada para: " . $email);
 
             // Insertar el nuevo usuario
             $query = "INSERT INTO usuarios (nombre, email, contrasena, rol) VALUES (:nombre, :email, :contrasena, :rol)";
@@ -42,11 +43,50 @@ class ModeloUsuarios {
                 ':contrasena' => $contrasenaHash,
                 ':rol' => $rol
             ]);
+            error_log("Usuario registrado correctamente: " . $email);
             return true;
         } catch (PDOException $e) {
             error_log("Error al registrar usuario: " . $e->getMessage());
-            $_SESSION['error'] = "Error al registrar el usuario. Inténtalo de nuevo.";
-            return false;
+            throw $e; // Relanzar la excepción para ser capturada por el controlador
+        }
+    }
+
+    /**
+     * Iniciar sesión de usuario.
+     *
+     * @param string $email Email del usuario.
+     * @param string $contrasena Contraseña del usuario.
+     * @return array|false Datos del usuario si las credenciales son válidas, false en caso contrario.
+     */
+    public function iniciarSesion($email, $contrasena) {
+        try {
+            error_log("Intento de inicio de sesión para: " . $email);
+            
+            $query = "SELECT * FROM usuarios WHERE email = :email";
+            $stmt = $this->db->prepare($query);
+            $stmt->execute([':email' => $email]);
+            $usuario = $stmt->fetch(PDO::FETCH_ASSOC);
+
+            if (!$usuario) {
+                error_log("Usuario no encontrado: " . $email);
+                return false;
+            }
+
+            error_log("Usuario encontrado, verificando contraseña para: " . $email);
+            
+            // Para depuración, verificar el hash almacenado
+            error_log("Hash almacenado: " . substr($usuario['contrasena'], 0, 20) . "...");
+            
+            if (password_verify($contrasena, $usuario['contrasena'])) {
+                error_log("Contraseña verificada correctamente para: " . $email);
+                return $usuario;
+            } else {
+                error_log("Contraseña incorrecta para: " . $email);
+                return false;
+            }
+        } catch (PDOException $e) {
+            error_log("Error en la base de datos al iniciar sesión: " . $e->getMessage());
+            throw $e; // Relanzar la excepción para ser capturada por el controlador
         }
     }
 
@@ -144,30 +184,6 @@ class ModeloUsuarios {
         } catch (PDOException $e) {
             error_log("Error al contar usuarios: " . $e->getMessage());
             return 0;
-        }
-    }
-
-    /**
-     * Verificar las credenciales de un usuario.
-     *
-     * @param string $email Email del usuario.
-     * @param string $contrasena Contraseña del usuario.
-     * @return array|false Datos del usuario si las credenciales son válidas, false en caso contrario.
-     */
-    public function verificarCredenciales($email, $contrasena) {
-        try {
-            $query = "SELECT * FROM usuarios WHERE email = :email";
-            $stmt = $this->db->prepare($query);
-            $stmt->execute([':email' => $email]);
-            $usuario = $stmt->fetch(PDO::FETCH_ASSOC);
-
-            if ($usuario && password_verify($contrasena, $usuario['contrasena'])) {
-                return $usuario;
-            }
-            return false;
-        } catch (PDOException $e) {
-            error_log("Error al verificar credenciales: " . $e->getMessage());
-            return false;
         }
     }
 }
