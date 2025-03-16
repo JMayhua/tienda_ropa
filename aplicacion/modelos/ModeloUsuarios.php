@@ -35,12 +35,12 @@ class ModeloUsuarios {
             error_log("Contraseña hasheada creada para: " . $email);
 
             // Insertar el nuevo usuario
-            $query = "INSERT INTO usuarios (nombre, email, contrasena, rol) VALUES (:nombre, :email, :contrasena, :rol)";
+            $query = "INSERT INTO usuarios (nombre, email, password, rol) VALUES (:nombre, :email, :contrasena, :rol)";
             $stmt = $this->db->prepare($query);
             $stmt->execute([
                 ':nombre' => $nombre,
                 ':email' => $email,
-                ':contrasena' => $contrasenaHash,
+                ':password' => $contrasenaHash,
                 ':rol' => $rol
             ]);
             error_log("Usuario registrado correctamente: " . $email);
@@ -77,7 +77,7 @@ class ModeloUsuarios {
             // Para depuración, verificar el hash almacenado
             error_log("Hash almacenado: " . substr($usuario['contrasena'], 0, 20) . "...");
             
-            if (password_verify($contrasena, $usuario['contrasena'])) {
+            if (password_verify($contrasena, $usuario['password'])) {
                 error_log("Contraseña verificada correctamente para: " . $email);
                 return $usuario;
             } else {

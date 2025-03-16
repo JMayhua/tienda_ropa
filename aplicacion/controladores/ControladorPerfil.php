@@ -30,7 +30,7 @@ class ControladorPerfil {
         $modeloUsuarios = new ModeloUsuarios();
 
         // Obtener los datos del usuario
-        $usuario = $modeloUsuarios->obtenerPorId($usuarioId);
+        $usuario = $modeloUsuarios->obtenerUsuarioPorId($usuarioId);
 
         // Pasar los datos a la vista
         require_once __DIR__ . '/../vistas/usuarios/ver_perfil.php';
