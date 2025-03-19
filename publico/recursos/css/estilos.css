@@ -3,16 +3,20 @@ body {
     font-family: 'Poppins', sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #f9f9f9;
-    color: #333;
+    background-color: #f4f4f9;
+    color: #2c3e50;
+    line-height: 1.6;
 }
 
 /* Cabecera */
 .cabecera {
-    background: linear-gradient(135deg, #ff6f61, #ff3b3f);
+    background: linear-gradient(135deg, #360fe6, #2575fc);
     color: white;
-    padding: 20px 0;
-    box-shadow: 0 4px 8px rgba(79, 122, 59, 0.1);
+    padding: 15px 0;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
 }
 
 .contenedor {
@@ -25,32 +29,52 @@ body {
 }
 
 .logo {
-    font-size: 2rem;
-    font-weight: 600;
+    font-size: 1.8rem;
+    font-weight: 700;
     margin: 0;
+    letter-spacing: -0.5px;
 }
 
 .navegacion {
     display: flex;
-    gap: 20px;
+    gap: 25px;
+    align-items: center;
 }
 
 .nav-link {
     color: white;
     text-decoration: none;
     font-size: 1rem;
-    transition: color 0.3s ease;
+    font-weight: 500;
+    padding: 8px 12px;
+    border-radius: 5px;
+    transition: all 0.3s ease;
 }
 
 .nav-link:hover {
-    color: #ffd700; /* Cambia el color al pasar el mouse */
+    background-color: rgba(255, 255, 255, 0.1);
+    transform: translateY(-2px);
+}
+
+/* Efecto especial para el carrito */
+.nav-link[href*="carrito"] {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    background-color: #ff4757;
+    padding: 8px 15px;
+    border-radius: 20px;
+}
+
+.nav-link[href*="carrito"]:hover {
+    background-color: #ff6b81;
 }
 
 /* Pie de página */
 .pie {
-    background: #f34e4e;
+    background: #2c3e50;
     color: white;
-    padding: 20px 0;
+    padding: 30px 0;
     text-align: center;
     margin-top: 40px;
 }
@@ -58,22 +82,45 @@ body {
 .pie .contenedor {
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 15px;
 }
 
 .redes-sociales {
     display: flex;
     justify-content: center;
-    gap: 15px;
+    gap: 20px;
 }
 
 .social-link {
     color: white;
     text-decoration: none;
-    font-size: 0.9rem;
+    font-size: 1rem;
     transition: color 0.3s ease;
 }
 
 .social-link:hover {
-    color: #ff6f61; /* Cambia el color al pasar el mouse */
+    color: #6a11cb;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .contenedor {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .navegacion {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 10px;
+    }
+
+    .nav-link {
+        font-size: 0.9rem;
+        padding: 6px 10px;
+    }
+
+    .logo {
+        font-size: 1.5rem;
+    }
 }

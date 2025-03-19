@@ -178,11 +178,22 @@ class ControladorAdmin {
     // Ver detalles de un pedido
     public function verPedido($id) {
         $this->verificarAdmin();
-
-        $pedido = $this->modeloPedidos->obtenerPedidoPorId($id);
-        $detalles = $this->modeloPedidos->obtenerDetallesPedido($id);
-
-        require_once __DIR__ . '/../vistas/admin/pedidos/ver.php';
+    
+        // Obtener los detalles del pedido
+        $pedido = $this->modeloPedidos->obtenerDetallesPedido($id);
+    
+        // Verificar si el pedido existe
+        if (!$pedido) {
+            $_SESSION['error'] = "El pedido no existe.";
+            header('Location: /Tienda_ropa/publico/index.php?accion=listar_pedidos');
+            exit();
+        }
+    
+        // Obtener los productos asociados al pedido
+        $detallesPedido = $this->modeloPedidos->obtenerProductosPedido($id);
+    
+        // Pasar los datos a la vista
+        require_once __DIR__ . '/../vistas/admin/ver.php';
     }
 
     // Cambiar el estado de un pedido
@@ -203,8 +214,8 @@ class ControladorAdmin {
             }
         }
 
-        $pedido = $this->modeloPedidos->obtenerPedidoPorId($id);
-        require_once __DIR__ . '/../vistas/admin/pedidos/cambiar_estado.php';
+        $pedido = $this->modeloPedidos->obtenerDetallesPedido($id);
+        require_once __DIR__ . '/../vistas/admin/cambiar_estado.php';
     }
 
     // Editar un usuario

@@ -1,78 +1,111 @@
 /* Contenedor del formulario de inicio de sesión */
 .login-container {
     max-width: 400px;
-    margin: 50px auto;
-    padding: 30px;
+    margin: 80px auto;
+    padding: 40px;
     background: #ffffff;
-    border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 12px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
     text-align: center;
+    border: 1px solid #e0e0e0;
 }
 
 /* Título */
 .login-container h1 {
-    font-size: 24px;
-    color: #333;
+    font-size: 28px;
+    color: #2c3e50;
+    margin-bottom: 25px;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+}
+
+/* Mensajes de error y éxito */
+.error-message {
+    background: #ffebee;
+    color: #c62828;
+    padding: 12px;
+    border-radius: 8px;
     margin-bottom: 20px;
-    font-weight: 600;
+    font-size: 14px;
+    border: 1px solid #ffcdd2;
+}
+
+.success-message {
+    background: #e8f5e9;
+    color: #2e7d32;
+    padding: 12px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    font-size: 14px;
+    border: 1px solid #c8e6c9;
 }
 
 /* Estilos para etiquetas */
 .login-container label {
     display: block;
     font-size: 14px;
-    margin: 10px 0 5px;
+    margin: 15px 0 8px;
     text-align: left;
     color: #555;
+    font-weight: 500;
 }
 
 /* Estilos para los campos de entrada */
 .login-container input {
     width: 100%;
-    padding: 10px;
-    font-size: 16px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
+    padding: 12px;
+    font-size: 14px;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
     outline: none;
-    transition: 0.3s ease-in-out;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    background-color: #f9f9f9;
 }
 
 .login-container input:focus {
-    border-color: #e63946;
+    border-color: #21cb11;
+    box-shadow: 0 0 8px rgba(106, 17, 203, 0.2);
 }
 
 /* Botón de envío */
 .login-container button {
     width: 100%;
-    padding: 12px;
+    padding: 14px;
     font-size: 16px;
-    font-weight: bold;
+    font-weight: 600;
     color: #fff;
-    background: #e63946;
+    background: #3311cb;
     border: none;
-    border-radius: 5px;
+    border-radius: 8px;
     cursor: pointer;
-    transition: 0.3s ease-in-out;
-    margin-top: 15px;
+    transition: background 0.3s ease, transform 0.2s ease;
+    margin-top: 20px;
 }
 
 .login-container button:hover {
-    background: #b52b36;
+    background: #2575fc;
+    transform: translateY(-2px);
+}
+
+.login-container button:active {
+    transform: translateY(0);
 }
 
 /* Enlace de registro */
 .login-container p {
-    margin-top: 15px;
+    margin-top: 20px;
     font-size: 14px;
     color: #555;
 }
 
 .login-container a {
-    color: #e63946;
-    font-weight: bold;
+    color: #6a11cb;
+    font-weight: 600;
     text-decoration: none;
+    transition: color 0.3s ease;
 }
 
 .login-container a:hover {
+    color: #2575fc;
     text-decoration: underline;
 }
