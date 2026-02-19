@@ -1,76 +1,74 @@
 <?php
 // aplicacion/vistas/productos/catalogo.php
 
-// Aseguramos que la sesión esté iniciada
 if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
 
-
-// Código para depuración
-echo "<!-- DEBUG: ";
-print_r($_SESSION);
-echo " -->";
-
-
-// Incluimos la cabecera dinámica
 require_once __DIR__ . '/../plantillas/cabecera.php';
-
-// Incluir el modelo de productos
 require_once __DIR__ . '/../../modelos/ModeloProductos.php';
 
-// Crear una instancia del modelo
 $modelo = new ModeloProductos();
-
-// Obtener todos los productos desde la base de datos
 $productos = $modelo->obtenerProductos();
 ?>
 
-<!-- Llamado al CSS -->
 <link rel="stylesheet" href="../publico/recursos/css/catalogo.css">
-
-<!-- Llamado a SweetAlert para notificaciones bonitas -->
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-
-<!-- Llamado al archivo JS -->
 <script src="../publico/recursos/js/catalogo.js" defer></script>
 
-<!-- Banner de ofertas -->
-<div class="banner">
-    <h1>🔥 ¡Ofertas Exclusivas en Nuestra Tienda! 🔥</h1>
-    <p>Descubre las mejores prendas al mejor precio.</p>
+<!-- Banner hero -->
+<section class="hero-banner">
+    <div class="hero-content">
+        <h1>COLECCIÓN PREMIUM 2025</h1>
+        <p>Descubre las prendas más exclusivas de la temporada</p>
+    </div>
+</section>
+
+<!-- Filtros -->
+<div class="category-filters">
+    <button class="category-btn active">Todos</button>
+    <button class="category-btn">Hombre</button>
+    <button class="category-btn">Mujer</button>
+    <button class="category-btn">Niños</button>
 </div>
 
-<!-- Título del catálogo -->
-<h1 class="titulo-catalogo">Catálogo de Productos</h1>
-
-<!-- Contenedor de productos -->
-<div class="productos">
+<!-- Productos -->
+<div class="product-grid">
     <?php foreach ($productos as $producto): ?>
-        <div class="producto">
-            <div class="producto-imagen">
-                <img src="<?php echo $producto['imagen']; ?>" alt="<?php echo $producto['nombre']; ?>" class="producto-img">
-                <?php if ($producto['descuento'] > 0): ?>
-                    <span class="descuento">-<?php echo $producto['descuento']; ?>%</span>
-                <?php endif; ?>
+        <div class="product-card">
+            <?php if ($producto['descuento'] > 0): ?>
+                <span class="product-badge">-<?= $producto['descuento'] ?>% OFF</span>
+            <?php endif; ?>
+            
+            <div class="product-media">
+                <img src="<?= $producto['imagen'] ?>" alt="<?= $producto['nombre'] ?>" class="product-image">
+                
+                <div class="product-actions">
+                    <button class="action-btn" title="Favoritos"><i class="fas fa-heart"></i></button>
+                    <button class="action-btn" title="Vista rápida"><i class="fas fa-eye"></i></button>
+                </div>
             </div>
-            <div class="producto-info">
-                <h2><?php echo $producto['nombre']; ?></h2>
-                <p class="descripcion"><?php echo $producto['descripcion']; ?></p>
-                <p class="precio">
+            
+            <div class="product-content">
+                <span class="product-category"><?= $producto['categoria'] ?></span>
+                <h3 class="product-title"><?= $producto['nombre'] ?></h3>
+                <p class="product-description"><?= $producto['descripcion'] ?></p>
+                
+                <div class="product-price">
                     <?php if ($producto['descuento'] > 0): ?>
-                        <span class="precio-antes">$<?php echo number_format($producto['precio'], 2); ?></span>
-                        <span class="precio-descuento">$<?php echo number_format($producto['precio'] * (1 - $producto['descuento'] / 100), 2); ?></span>
+                        <span class="current-price">$<?= number_format($producto['precio'] * (1 - $producto['descuento']/100), 2) ?></span>
+                        <span class="original-price">$<?= number_format($producto['precio'], 2) ?></span>
                     <?php else: ?>
-                        $<?php echo number_format($producto['precio'], 2); ?>
+                        <span class="current-price">$<?= number_format($producto['precio'], 2) ?></span>
                     <?php endif; ?>
-                </p>
-                <p><strong>Categoría:</strong> <?php echo $producto['categoria']; ?></p>
-                <p><strong>Stock:</strong> <?php echo $producto['stock']; ?></p>
-                <form method="POST" action="/Tienda_ropa/aplicacion/controladores/ControladorCarrito.php" style="display: inline;">
-                    <input type="hidden" name="id_producto" value="<?php echo $producto['id']; ?>">
+                </div>
+                
+                <form method="POST" action="/Tienda_ropa/aplicacion/controladores/ControladorCarrito.php">
+                    <input type="hidden" name="id_producto" value="<?= $producto['id'] ?>">
                     <input type="hidden" name="accion" value="añadir">
-                    <button type="submit" class="btn-agregar">🛒 Añadir al carrito</button>
+                    <button type="submit" class="add-to-cart">
+                        <i class="fas fa-shopping-cart"></i> Añadir al carrito
+                    </button>
                 </form>
             </div>
         </div>

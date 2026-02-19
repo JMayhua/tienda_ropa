@@ -1,126 +1,257 @@
-/* Estilos generales */
-body {
-    font-family: 'Poppins', sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #f4f4f9;
-    color: #2c3e50;
-    line-height: 1.6;
+/* ESTILOS UNIFICADOS */
+:root {
+    --primary-color: #6a11cb;
+    --secondary-color: #2575fc;
+    --dark-color: #1a1a2e;
+    --light-color: #f8f9fa;
+    --accent-color: #ff4757;
 }
 
-/* Cabecera */
-.cabecera {
-    background: linear-gradient(135deg, #360fe6, #2575fc);
-    color: white;
-    padding: 15px 0;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+/* CABECERA CON EFECTOS ESPECIALES */
+/* ESTILOS COMPLETOS PARA CABECERA - TIENDA DE ROPA */
+:root {
+    --primary-color: #6a11cb;
+    --secondary-color: #2575fc;
+    --dark-color: #1a1a2e;
+    --light-color: #f8f9fa;
+    --accent-color: #ff4757;
+    --text-light: #ffffff;
+    --text-dark: #2c3e50;
+  }
+  
+  /* ESTRUCTURA PRINCIPAL */
+  .cabecera {
+    background: linear-gradient(135deg, var(--dark-color), #16213e);
+    color: var(--text-light);
+    padding: 12px 0;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
     position: sticky;
     top: 0;
     z-index: 1000;
-}
-
-.contenedor {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
+  
+  .contenedor-cabecera {
     width: 90%;
-    max-width: 1200px;
+    max-width: 1400px;
     margin: 0 auto;
     display: flex;
     justify-content: space-between;
     align-items: center;
-}
-
-.logo {
-    font-size: 1.8rem;
+  }
+  
+  /* LOGO E IMAGEN (IZQUIERDA) */
+  .logo-section {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    transition: all 0.3s ease;
+  }
+  
+  .logo-section:hover {
+    transform: translateX(5px);
+  }
+  
+  .logo {
+    font-size: 2rem;
     font-weight: 700;
     margin: 0;
+    background: linear-gradient(to right, #f8f8f8, #a8d8ff);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
     letter-spacing: -0.5px;
-}
-
-.navegacion {
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  }
+  
+  .logo-image-container {
+    width: 60px;
+    height: 60px;
+    perspective: 1000px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: all 0.5s ease;
+  }
+  
+  .logo-image-container:hover {
+    transform: scale(1.1);
+    border-color: var(--primary-color);
+  }
+  
+  .logo-image {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    animation: spin 12s linear infinite;
+    filter: drop-shadow(0 0 5px rgba(106, 17, 203, 0.5));
+  }
+  
+  /* NAVEGACIÓN (DERECHA) */
+  .navegacion {
     display: flex;
-    gap: 25px;
-    align-items: center;
-}
-
-.nav-link {
-    color: white;
-    text-decoration: none;
-    font-size: 1rem;
-    font-weight: 500;
-    padding: 8px 12px;
-    border-radius: 5px;
-    transition: all 0.3s ease;
-}
-
-.nav-link:hover {
-    background-color: rgba(255, 255, 255, 0.1);
-    transform: translateY(-2px);
-}
-
-/* Efecto especial para el carrito */
-.nav-link[href*="carrito"] {
-    display: flex;
-    align-items: center;
-    gap: 5px;
-    background-color: #ff4757;
-    padding: 8px 15px;
-    border-radius: 20px;
-}
-
-.nav-link[href*="carrito"]:hover {
-    background-color: #ff6b81;
-}
-
-/* Pie de página */
-.pie {
-    background: #2c3e50;
-    color: white;
-    padding: 30px 0;
-    text-align: center;
-    margin-top: 40px;
-}
-
-.pie .contenedor {
-    display: flex;
-    flex-direction: column;
     gap: 15px;
-}
-
-.redes-sociales {
+    align-items: center;
+  }
+  
+  .nav-button {
+    position: relative;
+    overflow: hidden;
+    border-radius: 6px;
+  }
+  
+  .nav-link {
+    position: relative;
     display: flex;
-    justify-content: center;
-    gap: 20px;
-}
-
-.social-link {
-    color: white;
+    align-items: center;
+    color: var(--text-light);
     text-decoration: none;
-    font-size: 1rem;
-    transition: color 0.3s ease;
-}
-
-.social-link:hover {
-    color: #6a11cb;
-}
-
-/* Responsive Design */
-@media (max-width: 768px) {
-    .contenedor {
-        flex-direction: column;
-        gap: 15px;
+    font-size: 1.05rem;
+    font-weight: 500;
+    padding: 10px 22px;
+    z-index: 1;
+    transition: all 0.4s ease;
+  }
+  
+  .nav-link span {
+    position: relative;
+    z-index: 2;
+  }
+  
+  .nav-link i {
+    margin-right: 8px;
+    font-size: 0.9em;
+  }
+  
+  /* ANIMACIÓN DE BORDE */
+  .border-animation {
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    border: 2px solid transparent;
+    border-radius: 8px;
+    animation: borderSpin 3s linear infinite;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+  
+  .nav-button:hover .border-animation {
+    opacity: 1;
+  }
+  
+  /* EFECTO HOVER */
+  .nav-link::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(106, 17, 203, 0.3), rgba(37, 117, 252, 0.3));
+    z-index: -1;
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 0.4s ease-out;
+    border-radius: 4px;
+  }
+  
+  .nav-button:hover .nav-link::before {
+    transform: scaleX(1);
+    transform-origin: left;
+  }
+  
+  /* COLORES DIFERENTES PARA CADA BOTÓN */
+  .nav-button:nth-child(1) .border-animation {
+    border-top-color: var(--primary-color);
+    animation-delay: 0s;
+  }
+  
+  .nav-button:nth-child(2) .border-animation {
+    border-right-color: var(--secondary-color);
+    animation-delay: 0.2s;
+  }
+  
+  .nav-button:nth-child(3) .border-animation {
+    border-bottom-color: var(--accent-color);
+    animation-delay: 0.4s;
+  }
+  
+  /* BOTÓN ESPECIAL PARA CARRITO */
+  .cart-btn .nav-link {
+    background: rgba(255, 71, 87, 0.2);
+    border: 1px solid rgba(255, 71, 87, 0.4);
+  }
+  
+  .cart-btn .nav-link::before {
+    background: rgba(255, 71, 87, 0.4);
+  }
+  
+  /* ANIMACIONES */
+  @keyframes spin {
+    0% { transform: rotateY(0); }
+    100% { transform: rotateY(360deg); }
+  }
+  
+  @keyframes borderSpin {
+    0% { transform: rotate(0); }
+    100% { transform: rotate(360deg); }
+  }
+  
+  /* EFECTO PULSO PARA LOGO */
+  @keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+  }
+  
+  .logo-section:hover .logo {
+    animation: pulse 1.5s infinite;
+  }
+  
+  /* RESPONSIVE */
+  @media (max-width: 992px) {
+    .contenedor-cabecera {
+      flex-direction: column;
+      gap: 15px;
     }
-
+    
+    .logo-section {
+      flex-direction: column;
+      text-align: center;
+      gap: 5px;
+    }
+    
     .navegacion {
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 10px;
+      flex-wrap: wrap;
+      justify-content: center;
     }
-
+    
     .nav-link {
-        font-size: 0.9rem;
-        padding: 6px 10px;
+      padding: 8px 16px;
+      font-size: 0.95rem;
     }
-
+  }
+  
+  @media (max-width: 576px) {
     .logo {
-        font-size: 1.5rem;
+      font-size: 1.7rem;
     }
-}
+    
+    .logo-image-container {
+      width: 50px;
+      height: 50px;
+    }
+    
+    .navegacion {
+      gap: 8px;
+    }
+    
+    .nav-link {
+      padding: 6px 12px;
+      font-size: 0.9rem;
+    }
+  }

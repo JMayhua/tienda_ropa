@@ -1,0 +1,379 @@
+/* ESTILOS PARA LA PÁGINA NOSOTROS - STYLEHUB */
+:root {
+    --primary: #6a11cb;
+    --secondary: #2575fc;
+    --accent: #ff4757;
+    --dark: #1a1a2e;
+    --light: #f8f9fa;
+    --text: #2c3e50;
+    --gray: #7f8c8d;
+    --light-gray: #ecf0f1;
+    --success: #2ecc71;
+  }
+  
+  /* RESET Y ESTILOS BASE */
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--light);
+    color: var(--text);
+    line-height: 1.6;
+  }
+  
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+  
+  /* BANNER NOSOTROS */
+  .about-banner {
+    height: 500px;
+    background: url('../imagenes/nosotros/banner-nosotros.jpg') center/cover;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    text-align: center;
+    margin-bottom: 80px;
+  }
+  
+  .about-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(26, 26, 46, 0.8), rgba(106, 17, 203, 0.7));
+    z-index: 1;
+  }
+  
+  .about-content {
+    position: relative;
+    z-index: 2;
+    max-width: 800px;
+    padding: 0 20px;
+    animation: fadeInUp 1s ease-out;
+  }
+  
+  .about-banner h1 {
+    font-size: 3.5rem;
+    font-weight: 800;
+    margin-bottom: 20px;
+    letter-spacing: -1px;
+    text-shadow: 0 4px 8px rgba(0,0,0,0.3);
+    background: linear-gradient(to right, #fff, #a8d8ff);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  
+  .about-banner p {
+    font-size: 1.4rem;
+    font-weight: 300;
+    opacity: 0.9;
+  }
+  
+  /* SECCIONES GENERALES */
+  .about-section {
+    padding: 80px 0;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .section-header {
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto 60px;
+  }
+  
+  .section-badge {
+    display: inline-block;
+    padding: 8px 20px;
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
+    color: white;
+    font-size: 0.9rem;
+    font-weight: 600;
+    border-radius: 30px;
+    margin-bottom: 20px;
+    box-shadow: 0 5px 15px rgba(106, 17, 203, 0.3);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+  
+  .section-title {
+    font-size: 2.5rem;
+    font-weight: 800;
+    margin-bottom: 20px;
+    color: var(--text);
+    line-height: 1.2;
+    letter-spacing: -0.5px;
+  }
+  
+  .section-subtitle {
+    font-size: 1.1rem;
+    color: var(--gray);
+    font-weight: 400;
+  }
+  
+  .section-text {
+    font-size: 1.05rem;
+    margin-bottom: 25px;
+    color: var(--text);
+    opacity: 0.9;
+  }
+  
+  .section-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+  }
+  
+  /* SECCIÓN MISIÓN */
+  .mission-section {
+    background-color: var(--light);
+  }
+  
+  .content-col {
+    padding-right: 20px;
+  }
+  
+  .mission-values {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    margin-top: 40px;
+  }
+  
+  .mission-card {
+    background: white;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+    transition: all 0.4s ease;
+  }
+  
+  .mission-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+  }
+  
+  .mission-icon {
+    width: 60px;
+    height: 60px;
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+    box-shadow: 0 8px 20px rgba(106, 17, 203, 0.3);
+  }
+  
+  .mission-card h3 {
+    font-size: 1.3rem;
+    margin-bottom: 15px;
+    color: var(--text);
+    font-weight: 700;
+  }
+  
+  .mission-card p {
+    font-size: 0.95rem;
+    color: var(--gray);
+    line-height: 1.6;
+  }
+  
+  .about-image-container {
+    position: relative;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.15);
+  }
+  
+  .about-image {
+    width: 100%;
+    height: auto;
+    display: block;
+    transition: transform 0.8s ease;
+  }
+  
+  .about-image-container:hover .about-image {
+    transform: scale(1.05);
+  }
+  
+  .experience-badge {
+    position: absolute;
+    bottom: 30px;
+    left: 30px;
+    width: 120px;
+    height: 120px;
+    background: var(--primary);
+    border-radius: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(106, 17, 203, 0.4);
+    animation: pulse 2s infinite;
+  }
+  
+  .experience-badge .years {
+    font-size: 2.5rem;
+    font-weight: 800;
+    line-height: 1;
+  }
+  
+  .experience-badge .text {
+    font-size: 0.9rem;
+    font-weight: 400;
+    line-height: 1.2;
+  }
+  
+  /* SECCIÓN VALORES */
+  .values-section {
+    background-color: var(--light-gray);
+    position: relative;
+  }
+  
+  .values-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('../imagenes/nosotros/pattern.png') center/cover;
+    opacity: 0.04;
+    z-index: 0;
+  }
+  
+  .values-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 30px;
+    position: relative;
+    z-index: 1;
+  }
+  
+  .value-card {
+    background: white;
+    padding: 40px 30px;
+    border-radius: 15px;
+    text-align: center;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.08);
+    transition: all 0.4s ease;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .value-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 5px;
+    height: 0;
+    background: linear-gradient(to bottom, var(--primary), var(--secondary));
+    transition: height 0.6s ease;
+  }
+  
+  .value-card:hover::before {
+    height: 100%;
+  }
+  
+  .value-card:hover {
+    transform: translateY(-15px);
+    box-shadow: 0 20px 50px rgba(0,0,0,0.15);
+  }
+  
+  .value-icon {
+    width: 80px;
+    height: 80px;
+    background: rgba(106, 17, 203, 0.1);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--primary);
+    font-size: 2rem;
+    margin: 0 auto 25px;
+    transition: all 0.4s ease;
+  }
+  
+  .value-card:hover .value-icon {
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
+    color: white;
+    transform: rotateY(180deg);
+  }
+  
+  .value-card h3 {
+    font-size: 1.3rem;
+    margin-bottom: 15px;
+    color: var(--text);
+    font-weight: 700;
+    transition: color 0.3s ease;
+  }
+  
+  .value-card:hover h3 {
+    color: var(--primary);
+  }
+  
+  .value-card p {
+    font-size: 0.95rem;
+    color: var(--gray);
+    line-height: 1.6;
+  }
+  
+  /* SECCIÓN EQUIPO */
+  .team-section {
+    background-color: var(--light);
+  }
+  
+  .team-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 30px;
+  }
+  
+  .team-card {
+    background: white;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.08);
+    transition: all 0.4s ease;
+  }
+  
+  .team-card:hover {
+    transform: translateY(-15px);
+    box-shadow: 0 20px 50px rgba(0,0,0,0.15);
+  }
+  
+  .team-image-container {
+    position: relative;
+    height: 300px;
+    overflow: hidden;
+  }
+  
+  .team-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.8s ease;
+  }
+  
+  .team-card:hover .team-image {
+    transform: scale(1.1);
+  }
+  
+ 

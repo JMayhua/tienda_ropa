@@ -1,0 +1,122 @@
+# Tienda Ropa .gitignore
+# Excluir archivos innecesarios para el repositorio
+
+## IDE y Editor
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+*.sublime-project
+*.sublime-workspace
+.vim
+
+## Dependencias
+vendor/
+node_modules/
+composer.lock
+package-lock.json
+
+## Configuración Sensible
+configuracion/config.php
+.env
+.env.local
+.env.*.local
+
+## Credenciales
+*.key
+*.pem
+private_key.pem
+
+## Logs
+logs/
+*.log
+storage/logs/
+
+## Caché
+cache/
+tmp/
+temp/
+*.cache
+
+## Archivos Subidos
+publico/recursos/imagenes/*
+!publico/recursos/imagenes/.gitkeep
+comprobantes/*
+!comprobantes/.gitkeep
+uploads/
+
+## Archivos de Sistema Operativo
+.DS_Store
+Thumbs.db
+.directory
+
+## Archivos de Testing
+tests/coverage/
+coverage/
+.phpunit.result.cache
+
+## Build Outputs
+dist/
+build/
+*.zip
+*.tar.gz
+
+## Node (si usas webpack/gulp)
+node_modules/
+npm-debug.log
+yarn-error.log
+
+## PHP-specific
+.php-version
+phpunit.xml
+.phpdoc/
+
+## Archivos temporales
+*.tmp
+*.bak
+*.swp
+
+## Base de Datos (Backups)
+*.sql.bak
+*.sql.gz
+database.sqlite
+database_test.sqlite
+
+## IDE específicos
+# PHPStorm
+.idea/
+*.iml
+*.iws
+*.ipr
+
+# VSCode
+.vscode/
+*.code-workspace
+.history/
+
+# Sublime Text
+*.sublime-project
+*.sublime-workspace
+
+## Documentación generada
+docs/generated/
+api-docs/
+
+## Estado de desarrollo
+.env.development
+.env.test
+debug.log
+
+## Archivos de configuración local (cada desarrollador puede tener diferente)
+local-config.php
+dev-config.php
+
+## Caché de composer
+vendor/bin/
+composer.phar
+
+## Otros
+.htaccess.local
+.htpasswd
